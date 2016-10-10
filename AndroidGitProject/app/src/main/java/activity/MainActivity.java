@@ -1,10 +1,12 @@
-package com.example.itzuvillarce.gittestproject;
+package activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.itzuvillarce.gittestproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
