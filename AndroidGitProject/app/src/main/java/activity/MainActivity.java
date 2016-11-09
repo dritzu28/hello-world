@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        //collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
-        collapsingToolbarLayout.setTitle("dritzu");
+        //collapsingToolbarLayout.setTitle("dritzu");
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -52,6 +52,26 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         final PagerAdapter adapter = new adapter.PagerAdapter(getSupportFragmentManager(),  tabLayout.getTabCount());
+
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
@@ -103,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         Log.d("Fragment", "fragment home : " + fragment);
 
-        if(fragment != null){
+        /*if(fragment != null){
             FragmentManager fragmentManager =  getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment);
@@ -111,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
             getSupportActionBar().setTitle(title);
 
-        }
+        }*/
 
     }
 }
